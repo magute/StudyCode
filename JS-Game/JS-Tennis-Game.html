@@ -19,7 +19,6 @@
         var player1Score = 0;
         var player2Score = 0;
         const WINNING_SCORE = 3;
-        const STAGE_SCORE = 3;
 
         var showingWinScreen = false;
 
@@ -66,8 +65,8 @@
         }
 
         function ballReset(){
-            if(player1Score >= STAGE_SCORE ||
-               player2Score >= STAGE_SCORE) {
+            if(player1Score >= WINNING_SCORE ||
+               player2Score >= WINNING_SCORE) {
                    showingWinScreen = true;
                }
 
@@ -156,11 +155,11 @@
             if(showingWinScreen) {
                 canvasContext.fillStyle = 'white';
                 
-                if(player1Score >= STAGE_SCORE) {
-                    canvasContext.fillText("Left Player WON!",350,200);              
+                if(player1Score >= WINNING_SCORE) {
+                    canvasContext.fillText("YOU WON!",350,200);              
                     
-                } else if(player2Score >= STAGE_SCORE) {
-                    canvasContext.fillText("Right Player WON!",350,200);
+                } else if(player2Score >= WINNING_SCORE) {
+                    canvasContext.fillText("COMPUTER WON!",350,200);
                 }
                 
                 canvasContext.fillText("Click to play again...",350,500);

@@ -19,6 +19,7 @@
         var player1Score = 0;
         var player2Score = 0;
         const WINNING_SCORE = 3;
+        const STAGE_SCORE = 3;
 
         var showingWinScreen = false;
 
@@ -65,8 +66,8 @@
         }
 
         function ballReset(){
-            if(player1Score >= WINNING_SCORE ||
-               player2Score >= WINNING_SCORE) {
+            if(player1Score >= STAGE_SCORE ||
+               player2Score >= STAGE_SCORE) {
                    showingWinScreen = true;
                }
 
@@ -77,11 +78,28 @@
         
         function computerMovement(){
             var paddle2YCenter = paddle2Y + (PADDLE_HEIGHT/2);
-            if(paddle2YCenter < ballY - 35) {
-                paddle2Y += 6;
-            } else if(paddle2YCenter > ballY + 35){
-                paddle2Y -= 6;
+            if (player1Score == 0) {
+                if(paddle2YCenter < ballY - 10) {
+                    paddle2Y += 6;
+                } else if(paddle2YCenter > ballY + 10){
+                    paddle2Y -= 6;
+                    }
             }
+            if (player1Score == 1) {
+                if(paddle2YCenter < ballY - 10) {
+                    paddle2Y += 9;
+                } else if(paddle2YCenter > ballY + 10){
+                    paddle2Y -= 9;
+                    }
+            }
+            if (player1Score == 2) {
+                if(paddle2YCenter < ballY - 10) {
+                    paddle2Y += 12;
+                } else if(paddle2YCenter > ballY + 10){
+                    paddle2Y -= 12;
+                    }
+            }
+
         }
 
         function moveEverything(){
@@ -138,9 +156,10 @@
             if(showingWinScreen) {
                 canvasContext.fillStyle = 'white';
                 
-                if(player1Score >= WINNING_SCORE) {
-                    canvasContext.fillText("Left Player WON!",350,200);
-                } else if(player2Score >= WINNING_SCORE) {
+                if(player1Score >= STAGE_SCORE) {
+                    canvasContext.fillText("Left Player WON!",350,200);              
+                    
+                } else if(player2Score >= STAGE_SCORE) {
                     canvasContext.fillText("Right Player WON!",350,200);
                 }
                 

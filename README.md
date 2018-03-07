@@ -1,0 +1,3 @@
+# StudyCode
+Learning code...
+Using Javascript to create a simple game.
